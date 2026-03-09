@@ -1,11 +1,4 @@
 {
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "rewrites": [
-    { "source": "/", "destination": "/web/frontend/index.html" },
-    { "source": "/((?!api).*)", "destination": "/web/frontend/$1" }
-  ]
+  "buildCommand": "echo 'No build'",
+  "outputDirectory": "web/frontend"
 }
