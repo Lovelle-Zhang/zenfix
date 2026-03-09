@@ -1,5 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/web/frontend/$1" }
+  "routes": [
+    { "src": "/", "dest": "/web/frontend/index.html" },
+    { "src": "/(.*)", "dest": "/web/frontend/$1" }
   ]
 }
