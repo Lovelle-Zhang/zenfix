@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #0a0e27;
+  color: #00ff9f;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  width: 90%;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  border: 2px solid #00ff9f;
+  padding: 2rem;
+  background: rgba(0, 255, 159, 0.05);
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  text-shadow: 0 0 20px #00ff9f;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 20px #00ff9f; }
+  50% { text-shadow: 0 0 30px #00ff9f, 0 0 40px #00ff9f; }
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #00ff9f;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(0, 255, 159, 0.05);
+}
+
+.card:hover {
+  background: rgba(0, 255, 159, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 255, 159, 0.3);
+}
+
+.meditation-box {
+  text-align: center;
+  padding: 3rem;
+  border: 1px solid #00ff9f;
+  background: rgba(0, 255, 159, 0.05);
+}
+
+.meditation-text {
+  margin: 1rem 0;
+  opacity: 0.8;
+}
+
+.countdown {
+  font-size: 3rem;
+  margin-top: 2rem;
+  text-shadow: 0 0 20px #00ff9f;
+}
+
+.result-box {
+  border: 1px solid #00ff9f;
+  padding: 2rem;
+  background: rgba(0, 255, 159, 0.05);
+}
+
+.interpretation {
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  min-height: 200px;
+}
+
+.btn {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 1px solid #00ff9f;
+  color: #00ff9f;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: rgba(0, 255, 159, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.5);
+}

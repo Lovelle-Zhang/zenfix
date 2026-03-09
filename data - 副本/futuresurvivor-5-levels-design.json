@@ -1,0 +1,35 @@
+{
+  "futuresurvivor_5_levels": {
+    "1_wasteland": {
+      "name": "废土",
+      "english": "Wasteland",
+      "description": "生存模式,保住基本盘",
+      "emotion": "警惕、坚韧、专注"
+    },
+    "2_shelter": {
+      "name": "避难所",
+      "english": "Shelter",
+      "description": "找到安全,开始稳定",
+      "emotion": "安心、谨慎、希望"
+    },
+    "3_exploration": {
+      "name": "探索",
+      "english": "Exploration",
+      "description": "寻找机会,扩展边界",
+      "emotion": "勇气、好奇、期待"
+    },
+    "4_rebuild": {
+      "name": "重建",
+      "english": "Rebuild",
+      "description": "建设新秩序,创造价值",
+      "emotion": "充实、自豪、责任"
+    },
+    "5_new_era": {
+      "name": "新纪元",
+      "english": "New Era",
+      "description": "文明重生,开创未来",
+      "emotion": "希望、使命、超越"
+    }
+  },
+  "philosophy": "幸存不是终点,重建才是。从废墟中站起来,创造新的文明。"
+}

@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  opacity: 0.9;
+}
+
+.stage {
+  display: none;
+}
+
+.stage.active {
+  display: block;
+}
+
+.question-box {
+  margin-bottom: 30px;
+}
+
+#question {
+  width: 100%;
+  min-height: 120px;
+  padding: 20px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 12px;
+  resize: vertical;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.personas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.persona-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.persona-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.persona-card h3 {
+  margin-bottom: 8px;
+  color: #667eea;
+}
+
+.persona-card p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.oracle-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.oracle-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  color: #999;
+}
+
+.oracle-category {
+  font-size: 1.2em;
+  color: #667eea;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.oracle-imagery {
+  font-size: 1.5em;
+  margin: 20px 0;
+  color: #764ba2;
+  font-style: italic;
+}
+
+.oracle-verdict {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #333;
+}
+
+.oracle-insight,
+.oracle-advice,
+.oracle-task {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.interpretation {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.interpretation h3 {
+  margin-bottom: 15px;
+  color: #667eea;
+}
+
+.interpretation p {
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+#retry-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1em;
+  background: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#retry-btn:hover {
+  background: #667eea;
+  color: white;
+}
