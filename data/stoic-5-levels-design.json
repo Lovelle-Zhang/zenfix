@@ -1,0 +1,51 @@
+{
+  "stoic_5_levels": {
+    "1_confusion": {
+      "name": "困惑",
+      "english": "Confusion",
+      "description": "还未理解什么可控,什么不可控",
+      "emotion": "焦虑、迷茫、无力"
+    },
+    "2_awareness": {
+      "name": "觉察",
+      "english": "Awareness", 
+      "description": "开始区分可控与不可控",
+      "emotion": "清醒、理性、希望"
+    },
+    "3_rationality": {
+      "name": "理性",
+      "english": "Rationality",
+      "description": "专注可控,接纳不可控",
+      "emotion": "平静、专注、坚定"
+    },
+    "4_wisdom": {
+      "name": "智慧",
+      "english": "Wisdom",
+      "description": "深刻理解,灵活应对",
+      "emotion": "清晰、从容、自信"
+    },
+    "5_transcendence": {
+      "name": "超然",
+      "english": "Transcendence",
+      "description": "完全接纳,内心平静",
+      "emotion": "平静、自由、超脱"
+    }
+  },
+  "examples": [
+    {
+      "level": "困惑",
+      "scenario": "你在焦虑很多事,不知道该控制什么",
+      "insight": "你能控制的:你的态度、你的选择。你不能控制的:结果、别人的反应。"
+    },
+    {
+      "level": "理性",
+      "scenario": "你专注于可控的部分,接纳不可控的部分",
+      "insight": "把80%的精力放在可控的部分,20%用来应对不可控的部分。"
+    },
+    {
+      "level": "超然",
+      "scenario": "你完全接纳现实,内心平静",
+      "insight": "无论发生什么,你都能保持内心的平静。这是最高的自由。"
+    }
+  ]
+}

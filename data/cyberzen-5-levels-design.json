@@ -1,0 +1,35 @@
+{
+  "cyberzen_5_levels": {
+    "1_winter": {
+      "name": "冬藏",
+      "english": "Winter",
+      "description": "休养生息,为春天积蓄能量",
+      "emotion": "平静、内敛、沉淀"
+    },
+    "2_spring": {
+      "name": "春生",
+      "english": "Spring",
+      "description": "万物萌芽,新的开始",
+      "emotion": "希望、期待、好奇"
+    },
+    "3_summer": {
+      "name": "夏长",
+      "english": "Summer",
+      "description": "繁茂生长,充沛活力",
+      "emotion": "充实、兴奋、活力"
+    },
+    "4_autumn": {
+      "name": "秋收",
+      "english": "Autumn",
+      "description": "收获成果,感恩沉淀",
+      "emotion": "满足、感恩、平静"
+    },
+    "5_fullness": {
+      "name": "圆满",
+      "english": "Fullness",
+      "description": "循环完成,智慧升华",
+      "emotion": "圆满、智慧、超脱"
+    }
+  },
+  "philosophy": "自然有其节奏,人生也是。尊重循环,顺应自然。"
+}

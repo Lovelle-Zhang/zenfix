@@ -1,0 +1,39 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+    <defs>
+        <linearGradient id="aurora-hd" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00ffaa;stop-opacity:1" />
+            <stop offset="25%" style="stop-color:#00ffff;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#0088ff;stop-opacity:1" />
+            <stop offset="75%" style="stop-color:#aa00ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ff00aa;stop-opacity:1" />
+        </linearGradient>
+        <!-- 像素块：32x32（在512尺寸下相当于之前的16x16） -->
+        <pattern id="pixel-bright-hd" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+            <rect width="32" height="32" fill="url(#aurora-hd)" opacity="0.2"/>
+            <rect width="28" height="28" x="2" y="2" fill="url(#aurora-hd)"/>
+        </pattern>
+        <!-- 暗色像素块 -->
+        <pattern id="pixel-dark-hd" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+            <rect width="32" height="32" fill="url(#aurora-hd)" opacity="0.05"/>
+            <rect width="28" height="28" x="2" y="2" fill="url(#aurora-hd)" opacity="0.15"/>
+        </pattern>
+        <!-- 轻微发光 -->
+        <filter id="glow-hd">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <!-- 背景圆（暗色像素） -->
+    <circle cx="256" cy="256" r="230" fill="url(#pixel-dark-hd)"/>
+    <!-- 太极图案（亮色像素） -->
+    <path d="M 256 26 A 230 230 0 0 1 256 486 A 115 115 0 0 1 256 256 A 115 115 0 0 0 256 26 Z" 
+          fill="url(#pixel-bright-hd)" 
+          filter="url(#glow-hd)"
+          shape-rendering="crispEdges"/>
+    <!-- 阴阳鱼眼（更大更清晰） -->
+    <rect x="215" y="100" width="82" height="82" fill="url(#pixel-dark-hd)" shape-rendering="crispEdges"/>
+    <rect x="215" y="330" width="82" height="82" fill="url(#pixel-bright-hd)" filter="url(#glow-hd)" shape-rendering="crispEdges"/>
+</svg>

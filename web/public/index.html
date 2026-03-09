@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenfix - 数字算命</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Zenfix</h1>
+      <p class="subtitle">不炫技,更有温度</p>
+    </header>
+
+    <main id="app">
+      <!-- 输入阶段 -->
+      <div id="input-stage" class="stage active">
+        <div class="question-box">
+          <textarea id="question" placeholder="说说你的困惑..."></textarea>
+        </div>
+        
+        <div class="personas">
+          <div class="persona-card" data-persona="zenclaw">
+            <h3>ZenClaw</h3>
+            <p>赛博朋克黑客</p>
+          </div>
+          <div class="persona-card" data-persona="stoic">
+            <h3>Stoic</h3>
+            <p>斯多葛哲学家</p>
+          </div>
+          <div class="persona-card" data-persona="cyberzen">
+            <h3>Cyber-Zen</h3>
+            <p>自然禅意</p>
+          </div>
+          <div class="persona-card" data-persona="futuresurvivor">
+            <h3>Future-Survivor</h3>
+            <p>未来幸存者</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 结果阶段 -->
+      <div id="result-stage" class="stage">
+        <div class="oracle-card">
+          <div class="oracle-header">
+            <span id="oracle-id"></span>
+            <span id="oracle-level"></span>
+          </div>
+          <div class="oracle-category" id="oracle-category"></div>
+          <div class="oracle-imagery" id="oracle-imagery"></div>
+          <div class="oracle-verdict" id="oracle-verdict"></div>
+          <div class="oracle-insight" id="oracle-insight"></div>
+          <div class="oracle-advice" id="oracle-advice"></div>
+          <div class="oracle-task" id="oracle-task"></div>
+        </div>
+
+        <div class="interpretation">
+          <h3>AI解析</h3>
+          <p id="interpretation-text"></p>
+        </div>
+
+        <button id="retry-btn">再问一次</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
