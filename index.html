@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenfix - 赛博时代的数字求签</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">ZENFIX</h1>
+      <p class="subtitle">赛博时代的数字求签</p>
+    </header>
+
+    <main class="main">
+      <!-- 步骤1: 选择人格 -->
+      <section id="step-persona" class="step active">
+        <h2>选择你的AI人格</h2>
+        <div id="persona-list" class="card-grid"></div>
+      </section>
+
+      <!-- 步骤2: 选择类别 -->
+      <section id="step-category" class="step">
+        <h2>选择你关心的类别</h2>
+        <div id="category-list" class="card-grid"></div>
+      </section>
+
+      <!-- 步骤3: 冥想准备 -->
+      <section id="step-meditation-prepare" class="step">
+        <h2>冥想</h2>
+        <div class="meditation-box">
+          <p class="meditation-text">请闭上眼睛...</p>
+          <p class="meditation-text">在心中默念你的困惑...</p>
+          <p class="meditation-text">深呼吸...</p>
+        </div>
+      </section>
+
+      <!-- 步骤4: 冥想倒计时 -->
+      <section id="step-meditation" class="step">
+        <h2>冥想</h2>
+        <div class="meditation-box">
+          <div class="countdown"></div>
+        </div>
+      </section>
+
+      <!-- 步骤5: 结果 -->
+      <section id="step-result" class="step">
+        <h2>你的签文</h2>
+        <div class="result-box">
+          <div id="interpretation" class="interpretation"></div>
+          <button id="btn-restart" class="btn">再抽一次</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
