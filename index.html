@@ -89,21 +89,51 @@
       }
     });
     
-    // 包装原始的playBellSound，确保第三声有足够时间播放
+    // 包装原始的playBellSound，改为持续减弱的钟声
     window.addEventListener('load', function() {
       const originalPlayBellSound = window.playBellSound;
+      let sustainedBellPlaying = false;
+      
       if (originalPlayBellSound) {
         window.playBellSound = function() {
           bellSoundCount++;
-          originalPlayBellSound.call(this);
-          // 如果是第三声，返回一个延迟的Promise
+          
+          // 第一次调用时，播放持续6秒的减弱钟声
+          if (bellSoundCount === 1 && !sustainedBellPlaying) {
+            sustainedBellPlaying = true;
+            playSustainedBell();
+          }
+          
+          // 重置计数
           if (bellSoundCount === 3) {
-            // 延迟500ms确保音频播放完成
-            const delay = new Promise(resolve => setTimeout(resolve, 500));
             bellSoundCount = 0;
-            return delay;
+            sustainedBellPlaying = false;
           }
         };
+      }
+      
+      // 播放持续减弱的钟声
+      function playSustainedBell() {
+        const ctx = globalAudioContext;
+        if (!ctx) return;
+        
+        const now = ctx.currentTime;
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        
+        // 双频率叠加，模拟钟声
+        oscillator.frequency.setValueAtTime(432, now);
+        
+        // 初始音量0.5，快速衰减到0.1，然后缓慢消失
+        gainNode.gain.setValueAtTime(0.5, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.1, now + 0.5);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 6);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        
+        oscillator.start(now);
+        oscillator.stop(now + 6);
       }
     });
     
