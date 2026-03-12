@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zenfix - 赛博时代的数字求签</title>
-  <link rel="stylesheet" href="style.css?v=20260312-2056">
+  <link rel="stylesheet" href="style.css?v=20260312-2130">
 </head>
 <body>
   <div class="container">
@@ -50,75 +50,20 @@
     </main>
   </div>
 
+  <script src="app.js"></script>
+  
   <script>
   (function() {
-    let globalAudioContext = null;
-    let firstBellPlayed = false;
-    
-    function initAudioContext() {
-      if (globalAudioContext) return globalAudioContext;
-      const AC = window.AudioContext || window.webkitAudioContext;
-      if (AC) {
-        globalAudioContext = new AC();
-        if (globalAudioContext.state === 'suspended') {
-          globalAudioContext.resume();
-        }
-      }
-      return globalAudioContext;
-    }
-    
-    function unlockAudio() {
-      const ctx = initAudioContext();
-      if (ctx && ctx.state === 'suspended') {
-        ctx.resume();
-      }
-    }
-    
-    ['touchstart', 'touchend', 'click', 'keydown'].forEach(event => {
-      document.addEventListener(event, unlockAudio, { passive: true });
-    });
-    
-    document.addEventListener('visibilitychange', function() {
-      if (!document.hidden && globalAudioContext && globalAudioContext.state === 'suspended') {
-        globalAudioContext.resume();
-      }
-    });
-    
-    function playSustainedBell() {
-      const ctx = globalAudioContext;
-      if (!ctx) return;
-      
-      const now = ctx.currentTime;
-      const oscillator = ctx.createOscillator();
-      const gainNode = ctx.createGain();
-      
-      oscillator.frequency.setValueAtTime(432, now);
-      gainNode.gain.setValueAtTime(0.5, now);
-      gainNode.gain.exponentialRampToValueAtTime(0.1, now + 0.5);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, now + 6);
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(ctx.destination);
-      
-      oscillator.start(now);
-      oscillator.stop(now + 6);
-    }
-    
-    function replaceBellSound() {
+    const original = window.playBellSound;
+    if (original) {
+      let count = 0;
       window.playBellSound = function() {
-        if (!firstBellPlayed) {
-          firstBellPlayed = true;
-          playSustainedBell();
-        }
+        count++;
+        if (count === 1) original.call(this);
+        if (count >= 3) count = 0;
       };
     }
-    
-    initAudioContext();
-    replaceBellSound();
-    window.addEventListener('load', replaceBellSound);
   })();
   </script>
-  
-  <script src="app.js"></script>
 </body>
 </html>
