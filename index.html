@@ -98,11 +98,12 @@
         window.playBellSound = function() {
           bellSoundCount++;
           
-          // 第一次调用时，播放持续6秒的减弱钟声
+          // 只在第一次调用时播放持续钟声，后续调用忽略
           if (bellSoundCount === 1 && !sustainedBellPlaying) {
             sustainedBellPlaying = true;
             playSustainedBell();
           }
+          // 不调用原始函数，避免多次钟声
           
           // 重置计数
           if (bellSoundCount === 3) {
