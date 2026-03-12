@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zenfix - 赛博时代的数字求签</title>
-  <link rel="stylesheet" href="style.css?v=20260312-2025">
+  <link rel="stylesheet" href="style.css?v=20260312-2056">
 </head>
 <body>
   <div class="container">
@@ -51,12 +51,10 @@
   </div>
 
   <script>
-  // 移动端音频修复 - 在app.js加载前执行
   (function() {
     let globalAudioContext = null;
-    let bellSoundCount = 0;
+    let firstBellPlayed = false;
     
-    // 创建全局AudioContext
     function initAudioContext() {
       if (globalAudioContext) return globalAudioContext;
       const AC = window.AudioContext || window.webkitAudioContext;
@@ -69,7 +67,6 @@
       return globalAudioContext;
     }
     
-    // 在任何用户交互时初始化并恢复AudioContext
     function unlockAudio() {
       const ctx = initAudioContext();
       if (ctx && ctx.state === 'suspended') {
@@ -77,31 +74,15 @@
       }
     }
     
-    // 监听所有可能的用户交互
     ['touchstart', 'touchend', 'click', 'keydown'].forEach(event => {
       document.addEventListener(event, unlockAudio, { passive: true });
     });
     
-    // 页面可见性变化时恢复
     document.addEventListener('visibilitychange', function() {
       if (!document.hidden && globalAudioContext && globalAudioContext.state === 'suspended') {
         globalAudioContext.resume();
       }
     });
-    
-    // 立即初始化
-    initAudioContext();
-    
-    // 立即替换playBellSound
-    let sustainedBellPlaying = false;
-    
-    window.playBellSound = function() {
-      if (!sustainedBellPlaying) {
-        sustainedBellPlaying = true;
-        playSustainedBell();
-        setTimeout(() => { sustainedBellPlaying = false; }, 6000);
-      }
-    };
     
     function playSustainedBell() {
       const ctx = globalAudioContext;
@@ -122,6 +103,19 @@
       oscillator.start(now);
       oscillator.stop(now + 6);
     }
+    
+    function replaceBellSound() {
+      window.playBellSound = function() {
+        if (!firstBellPlayed) {
+          firstBellPlayed = true;
+          playSustainedBell();
+        }
+      };
+    }
+    
+    initAudioContext();
+    replaceBellSound();
+    window.addEventListener('load', replaceBellSound);
   })();
   </script>
   
