@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zenfix - 赛博时代的数字求签</title>
-  <link rel="stylesheet" href="style.css?v=20260312-1253">
-  <!-- Force Update: 2026-03-12 18:51 -->
+  <link rel="stylesheet" href="style.css?v=20260312-2025">
 </head>
 <body>
   <div class="container">
@@ -15,19 +14,16 @@
     </header>
 
     <main class="main">
-      <!-- 步骤1: 选择人格 -->
       <section id="step-persona" class="step active">
         <h2>选择你的AI人格</h2>
         <div id="persona-list" class="card-grid"></div>
       </section>
 
-      <!-- 步骤2: 选择类别 -->
       <section id="step-category" class="step">
         <h2>选择你关心的类别</h2>
         <div id="category-list" class="card-grid"></div>
       </section>
 
-      <!-- 步骤3: 冥想准备 -->
       <section id="step-meditation-prepare" class="step">
         <h2>冥想</h2>
         <div class="meditation-box">
@@ -37,7 +33,6 @@
         </div>
       </section>
 
-      <!-- 步骤4: 冥想倒计时 -->
       <section id="step-meditation" class="step">
         <h2>冥想</h2>
         <div class="meditation-box">
@@ -45,7 +40,6 @@
         </div>
       </section>
 
-      <!-- 步骤5: 结果 -->
       <section id="step-result" class="step">
         <h2>你的签文</h2>
         <div class="result-box">
@@ -56,7 +50,50 @@
     </main>
   </div>
 
-  <script src="audio-unlock.js"></script>
+  <script>
+  // 移动端音频修复 - 在app.js加载前执行
+  (function() {
+    let globalAudioContext = null;
+    
+    // 创建全局AudioContext
+    function initAudioContext() {
+      if (globalAudioContext) return globalAudioContext;
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) {
+        globalAudioContext = new AC();
+        // 立即尝试恢复
+        if (globalAudioContext.state === 'suspended') {
+          globalAudioContext.resume();
+        }
+      }
+      return globalAudioContext;
+    }
+    
+    // 在任何用户交互时初始化并恢复AudioContext
+    function unlockAudio() {
+      const ctx = initAudioContext();
+      if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+      }
+    }
+    
+    // 监听所有可能的用户交互
+    ['touchstart', 'touchend', 'click', 'keydown'].forEach(event => {
+      document.addEventListener(event, unlockAudio, { passive: true });
+    });
+    
+    // 页面可见性变化时恢复
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden && globalAudioContext && globalAudioContext.state === 'suspended') {
+        globalAudioContext.resume();
+      }
+    });
+    
+    // 立即初始化
+    initAudioContext();
+  })();
+  </script>
+  
   <script src="app.js"></script>
 </body>
 </html>
