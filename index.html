@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zenfix - 赛博时代的数字求签</title>
-  <link rel="stylesheet" href="style.css?v=20260312-2130">
+  <link rel="stylesheet" href="style.css?v=20260312-2142">
 </head>
 <body>
   <div class="container">
@@ -54,13 +54,16 @@
   
   <script>
   (function() {
+    let bellPlayed = false;
     const original = window.playBellSound;
+    
     if (original) {
-      let count = 0;
       window.playBellSound = function() {
-        count++;
-        if (count === 1) original.call(this);
-        if (count >= 3) count = 0;
+        if (!bellPlayed) {
+          bellPlayed = true;
+          original.call(this);
+          setTimeout(() => { bellPlayed = false; }, 7000);
+        }
       };
     }
   })();
