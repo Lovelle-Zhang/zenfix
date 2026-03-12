@@ -89,57 +89,38 @@
       }
     });
     
-    // 包装原始的playBellSound，改为持续减弱的钟声
-    window.addEventListener('load', function() {
-      const originalPlayBellSound = window.playBellSound;
-      let sustainedBellPlaying = false;
-      
-      if (originalPlayBellSound) {
-        window.playBellSound = function() {
-          bellSoundCount++;
-          
-          // 只在第一次调用时播放持续钟声，后续调用忽略
-          if (bellSoundCount === 1 && !sustainedBellPlaying) {
-            sustainedBellPlaying = true;
-            playSustainedBell();
-          }
-          // 不调用原始函数，避免多次钟声
-          
-          // 重置计数
-          if (bellSoundCount === 3) {
-            bellSoundCount = 0;
-            sustainedBellPlaying = false;
-          }
-        };
-      }
-      
-      // 播放持续减弱的钟声
-      function playSustainedBell() {
-        const ctx = globalAudioContext;
-        if (!ctx) return;
-        
-        const now = ctx.currentTime;
-        const oscillator = ctx.createOscillator();
-        const gainNode = ctx.createGain();
-        
-        // 双频率叠加，模拟钟声
-        oscillator.frequency.setValueAtTime(432, now);
-        
-        // 初始音量0.5，快速衰减到0.1，然后缓慢消失
-        gainNode.gain.setValueAtTime(0.5, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.1, now + 0.5);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 6);
-        
-        oscillator.connect(gainNode);
-        gainNode.connect(ctx.destination);
-        
-        oscillator.start(now);
-        oscillator.stop(now + 6);
-      }
-    });
-    
     // 立即初始化
     initAudioContext();
+    
+    // 立即替换playBellSound，在app.js加载前
+    let sustainedBellPlaying = false;
+    window.playBellSound = function() {
+      if (!sustainedBellPlaying) {
+        sustainedBellPlaying = true;
+        playSustainedBell();
+        setTimeout(() => { sustainedBellPlaying = false; }, 6000);
+      }
+    };
+    
+    function playSustainedBell() {
+      const ctx = globalAudioContext;
+      if (!ctx) return;
+      
+      const now = ctx.currentTime;
+      const oscillator = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      
+      oscillator.frequency.setValueAtTime(432, now);
+      gainNode.gain.setValueAtTime(0.5, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.1, now + 0.5);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, now + 6);
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      
+      oscillator.start(now);
+      oscillator.stop(now + 6);
+    }
   })();
   </script>
   
