@@ -54,6 +54,7 @@
   // 移动端音频修复 - 在app.js加载前执行
   (function() {
     let globalAudioContext = null;
+    let bellSoundCount = 0;
     
     // 创建全局AudioContext
     function initAudioContext() {
@@ -61,7 +62,6 @@
       const AC = window.AudioContext || window.webkitAudioContext;
       if (AC) {
         globalAudioContext = new AC();
-        // 立即尝试恢复
         if (globalAudioContext.state === 'suspended') {
           globalAudioContext.resume();
         }
@@ -86,6 +86,21 @@
     document.addEventListener('visibilitychange', function() {
       if (!document.hidden && globalAudioContext && globalAudioContext.state === 'suspended') {
         globalAudioContext.resume();
+      }
+    });
+    
+    // 包装原始的playBellSound，确保第三声有足够时间播放
+    window.addEventListener('load', function() {
+      const originalPlayBellSound = window.playBellSound;
+      if (originalPlayBellSound) {
+        window.playBellSound = function() {
+          bellSoundCount++;
+          originalPlayBellSound.call(this);
+          // 如果是第三声，强制等待音频播放完成
+          if (bellSoundCount === 3) {
+            bellSoundCount = 0;
+          }
+        };
       }
     });
     
