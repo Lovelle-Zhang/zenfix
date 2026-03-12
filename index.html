@@ -92,8 +92,9 @@
     // 立即初始化
     initAudioContext();
     
-    // 立即替换playBellSound，在app.js加载前
+    // 立即替换playBellSound
     let sustainedBellPlaying = false;
+    
     window.playBellSound = function() {
       if (!sustainedBellPlaying) {
         sustainedBellPlaying = true;
