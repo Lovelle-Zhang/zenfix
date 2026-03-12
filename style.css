@@ -223,3 +223,82 @@ h2 {
   box-shadow: 0 0 20px rgba(0, 255, 159, 0.5), 0 0 15px rgba(168, 85, 247, 0.3);
   color: #fff;
 }
+
+/* 手机端优化 */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    min-height: 80px;
+  }
+
+  #persona-list .card h3 {
+    font-size: 1.2rem;
+  }
+
+  #persona-list .card p {
+    font-size: 0.85rem;
+  }
+
+  .meditation-box {
+    padding: 2rem 1rem;
+    min-height: 250px;
+  }
+
+  .meditation-text {
+    font-size: 1rem;
+  }
+
+  .countdown {
+    font-size: 3rem;
+  }
+
+  .result-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .interpretation {
+    font-size: 1rem;
+    line-height: 1.8;
+    padding: 1.5rem 0;
+  }
+
+  .btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+}
