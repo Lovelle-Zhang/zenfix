@@ -96,9 +96,12 @@
         window.playBellSound = function() {
           bellSoundCount++;
           originalPlayBellSound.call(this);
-          // 如果是第三声，强制等待音频播放完成
+          // 如果是第三声，返回一个延迟的Promise
           if (bellSoundCount === 3) {
+            // 延迟500ms确保音频播放完成
+            const delay = new Promise(resolve => setTimeout(resolve, 500));
             bellSoundCount = 0;
+            return delay;
           }
         };
       }
