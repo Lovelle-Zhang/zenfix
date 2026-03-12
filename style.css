@@ -288,12 +288,15 @@ h2 {
 
   .result-box {
     padding: 2rem 1.5rem;
+    max-height: 70vh;
+    overflow-y: auto;
   }
 
   .interpretation {
     font-size: 1rem;
     line-height: 1.8;
     padding: 1.5rem 0;
+    max-height: none;
   }
 
   .btn {
