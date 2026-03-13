@@ -215,10 +215,13 @@ h2 {
 }
 
 .result-box {
-  border: 2px solid;
-  border-image: linear-gradient(135deg, #00ff9f, #a855f7, #ec4899) 1;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(135deg, rgba(0, 255, 159, 0.05) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(236, 72, 153, 0.05) 100%),
+    linear-gradient(135deg, #00ff9f, #a855f7, #ec4899) border-box;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
   padding: 3rem;
-  background: linear-gradient(135deg, rgba(0, 255, 159, 0.05) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(236, 72, 153, 0.05) 100%);
   position: relative;
   box-shadow: 0 0 30px rgba(0, 255, 159, 0.1), 0 0 20px rgba(168, 85, 247, 0.1), inset 0 0 30px rgba(0, 255, 159, 0.05);
 }
@@ -250,6 +253,33 @@ h2 {
   color: #e0fff5;
   text-shadow: 0 0 1px rgba(0, 255, 159, 0.3);
   letter-spacing: 0.05em;
+  position: relative;
+}
+
+.interpretation::before,
+.interpretation::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 159, 0.05) 3%, 
+    rgba(0, 255, 159, 0.2) 20%, 
+    rgba(0, 255, 159, 0.3) 50%, 
+    rgba(0, 255, 159, 0.2) 80%, 
+    rgba(0, 255, 159, 0.05) 97%, 
+    transparent 100%
+  );
+}
+
+.interpretation::before {
+  top: 0;
+}
+
+.interpretation::after {
+  bottom: 0;
 }
 
 .btn {
