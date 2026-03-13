@@ -274,9 +274,6 @@ h2 {
   color: #fff;
 }
 
-**第4段（最后一段 - 手机端优化）：**
-
-```css
 /* 手机端优化 */
 @media (max-width: 768px) {
   body {
