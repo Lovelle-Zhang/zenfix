@@ -1,4 +1,26 @@
-/* Updated: 2026-03-12 12:38 */
+/* Updated: 2026-03-13 13:40 - 字体系统重构 */
+
+/* ========== 字体系统 ========== */
+:root {
+  /* 中文：优雅黑体系 */
+  --font-zh-display: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-zh-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  
+  /* 英文：科技等宽系 */
+  --font-en-display: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
+  --font-en-body: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
+  
+  /* 混合场景 */
+  --font-mixed: var(--font-en-body), var(--font-zh-body);
+  
+  /* 字重 */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +28,8 @@
 }
 
 body {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mixed);
+  font-weight: var(--fw-regular);
   background: linear-gradient(135deg, #0a0e27 0%, #1a1535 25%, #0f1a3a 50%, #1a1535 75%, #0a0e27 100%);
   color: #00ff9f;
   min-height: 100vh;
@@ -63,7 +86,9 @@ body::before {
 }
 
 .title {
+  font-family: var(--font-en-display);
   font-size: 3rem;
+  font-weight: var(--fw-bold);
   letter-spacing: 0.5rem;
   background: linear-gradient(90deg, #00ff9f 0%, #00d4ff 25%, #a855f7 50%, #ec4899 75%, #00ff9f 100%);
   -webkit-background-clip: text;
@@ -79,8 +104,11 @@ body::before {
 }
 
 .subtitle {
+  font-family: var(--font-zh-body);
+  font-weight: var(--fw-light);
   margin-top: 1rem;
   font-size: 1rem;
+  letter-spacing: 0.15em;
   opacity: 0.8;
 }
 
@@ -104,9 +132,12 @@ body::before {
 }
 
 h2 {
+  font-family: var(--font-zh-body);
+  font-weight: var(--fw-medium);
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.5rem;
+  letter-spacing: 0.1em;
 }
 
 .card-grid {
@@ -125,19 +156,25 @@ h2 {
 }
 
 #persona-list .card h3 {
+  font-family: var(--font-zh-body);
   font-size: 1.3rem;
+  font-weight: var(--fw-semibold);
   margin-bottom: 0.8rem;
   color: #00ff9f;
   text-shadow: 0 0 10px rgba(0, 255, 159, 0.5);
   padding-bottom: 0.8rem;
   border-bottom: 1px solid rgba(0, 255, 159, 0.3);
+  letter-spacing: 0.05em;
 }
 
 #persona-list .card p {
+  font-family: var(--font-zh-body);
   font-size: 0.9rem;
+  font-weight: var(--fw-light);
   color: #a0a0a0;
-  line-height: 1.6;
+  line-height: 1.8;
   margin-top: 0.8rem;
+  letter-spacing: 0.03em;
 }
 
 .card:hover {
@@ -160,14 +197,21 @@ h2 {
 }
 
 .meditation-text {
+  font-family: var(--font-zh-body);
+  font-weight: var(--fw-light);
   margin: 1rem 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
   opacity: 0.8;
 }
 
 .countdown {
+  font-family: var(--font-en-display);
   font-size: 3rem;
+  font-weight: var(--fw-bold);
   margin-top: 2rem;
   text-shadow: 0 0 20px #00ff9f;
+  letter-spacing: 0.1em;
 }
 
 .result-box {
@@ -192,6 +236,8 @@ h2 {
 }
 
 .interpretation {
+  font-family: var(--font-zh-body);
+  font-weight: var(--fw-regular);
   line-height: 2;
   margin-bottom: 3rem;
   min-height: 200px;
@@ -203,9 +249,12 @@ h2 {
   white-space: pre-line;
   color: #e0fff5;
   text-shadow: 0 0 1px rgba(0, 255, 159, 0.3);
+  letter-spacing: 0.05em;
 }
 
 .btn {
+  font-family: var(--font-zh-body);
+  font-weight: var(--fw-medium);
   display: block;
   margin: 2rem auto 0;
   padding: 1rem 2rem;
@@ -213,9 +262,10 @@ h2 {
   border: 1px solid;
   border-image: linear-gradient(90deg, #00ff9f, #a855f7, #ec4899) 1;
   color: #00ff9f;
-  font-family: 'Courier New', monospace;
   cursor: pointer;
   transition: all 0.3s;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
 }
 
 .btn:hover {
@@ -224,6 +274,9 @@ h2 {
   color: #fff;
 }
 
+**第4段（最后一段 - 手机端优化）：**
+
+```css
 /* 手机端优化 */
 @media (max-width: 768px) {
   body {
