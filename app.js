@@ -6,8 +6,8 @@ function init(){loadPersonas();setupEventListeners();}
 function loadPersonas(){const c=document.getElementById('persona-list');PERSONAS.forEach(p=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<h3>${p.name}</h3><p>${p.desc}</p>`;d.onclick=()=>selectPersona(p.id);c.appendChild(d);});}
 function selectPersona(p){state.persona=p;showStep('step-category');loadCategories();}
 function loadCategories(){const c=document.getElementById('category-list');c.innerHTML='';CATEGORIES.forEach(t=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<h3>${t}</h3>`;d.onclick=()=>selectCategory(t);c.appendChild(d);});}
-function selectCategory(c){state.category=c;showStep('step-meditation');startMeditation();}
-function startMeditation(){const c=document.querySelector('.countdown');let n=3;const t=setInterval(()=>{if(n>0){c.textContent=n;n--;if(n===0){clearInterval(t);drawOracle();}}},1000);}
+function selectCategory(c){state.category=c;showStep('step-meditation-prepare');setTimeout(()=>{showStep('step-meditation');startMeditation();},3000);}
+function startMeditation(){const c=document.querySelector('.countdown');let n=3;const t=setInterval(()=>{c.textContent=n;n--;if(n<0){clearInterval(t);drawOracle();}},1000);}
 function drawOracle(){const o=ORACLES_DATA[state.persona]?.[state.category];if(!o||o.length===0){showResult('签文数据加载失败，请刷新重试。');return;}const r=o[Math.floor(Math.random()*o.length)];const t=`【${r.level}】\n\n${r.content}\n\n━━━━━━━━━━━━━━━━\n\n${r.interpretation}`;showResult(t);}
 function showResult(t){showStep('step-result');const c=document.getElementById('interpretation');c.textContent='';let i=0;const w=setInterval(()=>{if(i<t.length){c.textContent+=t[i];i++;}else{clearInterval(w);}},30);}
 function showStep(t){document.querySelectorAll('.step').forEach(e=>e.classList.remove('active'));document.getElementById(t).classList.add('active');}
