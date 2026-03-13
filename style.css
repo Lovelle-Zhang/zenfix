@@ -230,12 +230,19 @@ h2 {
   content: '';
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
+  left: 0;
+  right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #00ff9f, #a855f7, #ec4899, transparent);
-  box-shadow: 0 0 15px #00ff9f, 0 0 10px #a855f7;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 159, 0.3) 15%, 
+    #00ff9f 35%, 
+    #a855f7 50%, 
+    #ec4899 65%, 
+    rgba(236, 72, 153, 0.3) 85%, 
+    transparent 100%
+  );
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5), 0 0 10px rgba(168, 85, 247, 0.3);
 }
 
 .interpretation {
