@@ -242,7 +242,7 @@ h2 {
   margin-bottom: 3rem;
   min-height: 200px;
   font-size: 1.1rem;
-  text-align: justify;
+  text-align: left;
   padding: 2rem 0;
   border-top: 1px solid rgba(0, 255, 159, 0.3);
   border-bottom: 1px solid rgba(0, 255, 159, 0.3);
@@ -250,6 +250,8 @@ h2 {
   color: #e0fff5;
   text-shadow: 0 0 1px rgba(0, 255, 159, 0.3);
   letter-spacing: 0.05em;
+  text-spacing: ideograph-alpha ideograph-numeric;
+  font-feature-settings: "halt";
 }
 
 .btn {
