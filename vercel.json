@@ -1,4 +1,6 @@
 {
   "buildCommand": "echo 'No build'",
-  "outputDirectory": "web/frontend"
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
