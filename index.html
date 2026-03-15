@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zenfix - 赛博时代的数字求签</title>
   <link rel="stylesheet" href="style.css?v=20260313-1435">
+  <link rel="stylesheet" href="splash.css?v=20260315">
   <script>
   // 在app.js加载前就定义空函数（手机端）
   if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -13,6 +14,24 @@
   </script>
 </head>
 <body>
+  <!-- 神经接入转场协议 -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <!-- Phase 01: Silence -->
+      <div class="amber-dot"></div>
+      <div class="init-text">INITIALIZING_CONSCIOUS_SYNC...</div>
+      
+      <!-- Phase 02: Decryption -->
+      <div class="data-stream"></div>
+      
+      <!-- Phase 03: Resonance -->
+      <div class="logo-glitch">ZENFIX</div>
+    </div>
+  </div>
+
+  <!-- 激光扫描线 -->
+  <div id="laser-scan" class="laser-scan"></div>
+
   <div class="container">
     <header class="header">
       <h1 class="title">ZENFIX</h1>
@@ -56,6 +75,7 @@
     </main>
   </div>
 
+  <script src="splash.js?v=20260315"></script>
   <script src="app.js?v=20260313-1707"></script>
 </body>
 </html>
