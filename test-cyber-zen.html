@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛博禅宗测试</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/cyber-zen.css">
+</head>
+<body>
+    <div class="container">
+        <div class="step active" id="step-result">
+            <div class="result-box"></div>
+        </div>
+    </div>
+
+    <script src="personas/cyber-zen.js"></script>
+    <script>
+        // 自动测试
+        window.addEventListener('load', async () => {
+            try {
+                // 加载数据
+                const response = await fetch('data/cyber-zen.json');
+                const data = await response.json();
+                
+                // 随机选一条签文
+                const category = data.persona.categories[0];
+                const fortune = category.fortunes[Math.floor(Math.random() * category.fortunes.length)];
+                
+                // 初始化并渲染
+                CyberZen.init();
+                CyberZen.render(fortune);
+                
+            } catch (error) {
+                console.error('加载失败:', error);
+                document.querySelector('.result-box').innerHTML = 
+                    '<p style="color: red;">加载失败: ' + error.message + '</p>';
+            }
+        });
+    </script>
+</body>
+</html>
