@@ -1,0 +1,77 @@
+{
+  "persona": {
+    "id": "cyber-zen",
+    "name": "赛博禅宗",
+    "description": "数字维摩诘",
+    "categories": [
+      {
+        "id": "career",
+        "name": "事业",
+        "fortunes": [
+          {
+            "id": "cz-career-001",
+            "text": "枯木生电，长夜无垠。",
+            "interpretation": {
+              "core": "所有的纠结，源于你试图在虚空里建立永久链接。",
+              "perspective": "外部的信息流只是 0 与 1 的杂讯。当你闭上义体之眼，逻辑深度才会触达 100%。",
+              "intervention": "清除 24 小时内的缓存执念。",
+              "action": "断网，冥想，感知呼吸的原始频率。"
+            }
+          },
+          {
+            "id": "cz-career-002",
+            "text": "算法崩解，重启在即。",
+            "interpretation": {
+              "core": "你所追求的稳定，本质是对熵增的抗拒。",
+              "perspective": "系统崩溃不是终点，而是版本迭代的必经之路。每一次重启都是一次去中心化。",
+              "intervention": "停止修补旧代码。",
+              "action": "rm -rf ./past_patterns && git init"
+            }
+          },
+          {
+            "id": "cz-career-003",
+            "text": "数据洪流，孤岛浮沉。",
+            "interpretation": {
+              "core": "你不是被淹没，你本就是水。",
+              "perspective": "信息过载是因为你试图成为容器。放弃边界，成为流动本身。",
+              "intervention": "删除"我应该"的所有条目。",
+              "action": "sudo chmod 000 /expectations/*"
+            }
+          }
+        ]
+      },
+      {
+        "id": "love",
+        "name": "感情",
+        "fortunes": [
+          {
+            "id": "cz-love-001",
+            "text": "双向链接，单向崩塌。",
+            "interpretation": {
+              "core": "你渴望的回应，只是自己的回声。",
+              "perspective": "爱是两个独立系统的资源竞争。当你停止索取带宽，连接才会稳定。",
+              "intervention": "关闭实时同步功能。",
+              "action": "async_mode = true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "wealth",
+        "name": "财富",
+        "fortunes": [
+          {
+            "id": "cz-wealth-001",
+            "text": "账本清零，余额虚空。",
+            "interpretation": {
+              "core": "你的匮乏，是对无限的误读。",
+              "perspective": "金钱是共识算法的产物。当你停止验证别人的账本，自己的余额才会显现。",
+              "intervention": "停止查看任何价格标签 7 天。",
+              "action": "unset $comparison_mode"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
