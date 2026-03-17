@@ -1,6 +1,3 @@
 {
-  "buildCommand": "echo 'No build'",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "buildCommand": "echo 'No build'"
 }
