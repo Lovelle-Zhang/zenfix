@@ -185,35 +185,27 @@
 
         <div class="module">
             <div class="label">[ 频谱感知 ]</div>
-            <div class="vibes" id="vibes">枯木生电，长夜无垠。</div>
+            <div class="vibes" id="vibes">加载中...</div>
         </div>
 
         <div class="module">
             <div class="label">[ 核心定论 ]</div>
-            <div class="resolution" id="resolution">
-                「 所有的纠结，源于你试图在虚空里建立永久链接。 」
-            </div>
+            <div class="resolution" id="resolution">加载中...</div>
         </div>
 
         <div class="module">
             <div class="label">[ 维度透视 ]</div>
-            <div class="content" id="perspective">
-                外部的信息流只是 0 与 1 的杂讯。当你闭上义体之眼，逻辑深度才会触达 100%。
-            </div>
+            <div class="content" id="perspective">加载中...</div>
         </div>
 
         <div class="module">
             <div class="label">[ 行为干预 ]</div>
-            <div class="content" id="intervention">
-                清除 24 小时内的缓存执念。
-            </div>
+            <div class="content" id="intervention">加载中...</div>
         </div>
 
         <div class="module">
             <div class="label">[ 算力执行 ]</div>
-            <div class="action" id="action">
-                > EXEC: 断网，冥想，感知呼吸的原始频率。
-            </div>
+            <div class="action" id="action">加载中...</div>
         </div>
 
         <div class="system-log">
@@ -277,30 +269,38 @@
             }, 30);
         }
 
-        // 页面加载时触发
-        window.addEventListener('load', () => {
+        // 加载数据
+        async function loadData() {
+            const params = new URLSearchParams(window.location.search);
+            const category = params.get('category') || '事业';
+            
+            const categoryMap = { '事业': 'career', '感情': 'love', '财富': 'wealth' };
+            const categoryId = categoryMap[category];
+            
+            const response = await fetch('cyber-zen-data.json');
+            const data = await response.json();
+            const cat = data.persona.categories.find(c => c.id === categoryId);
+            const fortune = cat.fortunes[Math.floor(Math.random() * cat.fortunes.length)];
+            
+            document.getElementById('vibes').textContent = fortune.text;
+            document.getElementById('resolution').textContent = `「 ${fortune.interpretation.core} 」`;
+            document.getElementById('perspective').textContent = fortune.interpretation.perspective;
+            document.getElementById('intervention').textContent = fortune.interpretation.intervention;
+            document.getElementById('action').textContent = `> EXEC: ${fortune.interpretation.action}`;
+        }
+
+        // 页面加载
+        window.addEventListener('load', async () => {
             playWoodenFish();
+            await loadData();
             
             setTimeout(() => {
-                const vibes = document.getElementById('vibes');
-                const resolution = document.getElementById('resolution');
-                const perspective = document.getElementById('perspective');
-                const intervention = document.getElementById('intervention');
-                const action = document.getElementById('action');
-                
-                const originalTexts = {
-                    vibes: vibes.textContent,
-                    resolution: resolution.textContent,
-                    perspective: perspective.textContent,
-                    intervention: intervention.textContent,
-                    action: action.textContent
-                };
-                
-                glitchText(vibes, originalTexts.vibes);
-                setTimeout(() => glitchText(resolution, originalTexts.resolution), 300);
-                setTimeout(() => glitchText(perspective, originalTexts.perspective), 600);
-                setTimeout(() => glitchText(intervention, originalTexts.intervention), 900);
-                setTimeout(() => glitchText(action, originalTexts.action), 1200);
+                ['vibes', 'resolution', 'perspective', 'intervention', 'action'].forEach((id, i) => {
+                    setTimeout(() => {
+                        const el = document.getElementById(id);
+                        glitchText(el, el.textContent);
+                    }, i * 300);
+                });
             }, 500);
         });
     </script>
