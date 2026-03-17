@@ -1,3 +1,7 @@
 {
-  "buildCommand": "echo 'No build'"
+  "buildCommand": "echo 'No build'",
+  "rewrites": [
+    { "source": "/test-cyber-zen.html", "destination": "/test-cyber-zen.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
