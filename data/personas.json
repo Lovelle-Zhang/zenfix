@@ -1,0 +1,12 @@
+{
+  "personas": [
+    {
+      "id": "cyber-zen",
+      "name": "赛博禅宗",
+      "description": "数字维摩诘",
+      "moduleFile": "personas/cyber-zen.js",
+      "styleFile": "styles/cyber-zen.css",
+      "dataFile": "data/cyber-zen.json"
+    }
+  ]
+}

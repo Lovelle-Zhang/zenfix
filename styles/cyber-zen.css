@@ -1,0 +1,180 @@
+/* 赛博禅宗结果页样式 */
+
+body.cyber-zen {
+    background: #0a0014 !important;
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+body.cyber-zen::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+    );
+    pointer-events: none;
+    animation: cz-scan 8s linear infinite;
+    z-index: 0;
+}
+
+@keyframes cz-scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+}
+
+/* 隐藏默认UI */
+body.cyber-zen .header,
+body.cyber-zen .step:not(.active) {
+    display: none !important;
+}
+
+/* 结果页容器 */
+body.cyber-zen .result-box {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 标题 */
+body.cyber-zen .cz-seed {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* 模块通用 */
+body.cyber-zen .cz-module {
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: cz-glitchIn 0.5s forwards;
+}
+
+body.cyber-zen .cz-module:nth-child(2) { animation-delay: 0.3s; }
+body.cyber-zen .cz-module:nth-child(3) { animation-delay: 0.6s; }
+body.cyber-zen .cz-module:nth-child(4) { animation-delay: 0.9s; }
+body.cyber-zen .cz-module:nth-child(5) { animation-delay: 1.2s; }
+body.cyber-zen .cz-module:nth-child(6) { animation-delay: 1.5s; }
+body.cyber-zen .cz-module:nth-child(7) { animation-delay: 1.8s; }
+
+@keyframes cz-glitchIn {
+    0% { opacity: 0; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+body.cyber-zen .cz-label {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+body.cyber-zen .cz-content {
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: #00ffff;
+    text-shadow: 0 0 5px rgba(0,255,255,0.3);
+}
+
+/* 频谱感知 - 极细发光 */
+body.cyber-zen .cz-vibes {
+    font-size: 18px;
+    letter-spacing: 3px;
+    line-height: 2;
+    color: #00ffff;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+/* 核心定论 - 玫红裂痕 */
+body.cyber-zen .cz-resolution {
+    color: #ff007f;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 15px #ff007f;
+    padding: 20px 0;
+    border-left: 2px solid #ff007f;
+    padding-left: 20px;
+}
+
+/* 算力执行 - 代码指令 */
+body.cyber-zen .cz-action {
+    font-family: 'Consolas', monospace;
+    color: #00ff00;
+    font-size: 14px;
+    background: rgba(0,255,0,0.05);
+    padding: 15px;
+    border-left: 3px solid #00ff00;
+}
+
+/* 系统日志 */
+body.cyber-zen .cz-log {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 12px;
+    color: #444;
+    letter-spacing: 2px;
+}
+
+/* 重新抽签按钮 */
+body.cyber-zen #btn-restart {
+    display: block;
+    margin: 40px auto 0;
+    padding: 15px 40px;
+    background: transparent !important;
+    border: 1px solid #00ffff !important;
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+body.cyber-zen #btn-restart:hover {
+    background: rgba(0,255,255,0.1) !important;
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+/* 底部波纹 */
+body.cyber-zen .cz-visualizer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.cyber-zen .cz-wave {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(0,150,255,0.2);
+    border-radius: 50%;
+    animation: cz-pulse 4s ease-in-out infinite;
+}
+
+@keyframes cz-pulse {
+    0%, 100% { transform: translateX(-50%) scale(0.8); opacity: 0.3; }
+    50% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+}
