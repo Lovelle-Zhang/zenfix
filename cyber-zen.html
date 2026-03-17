@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛博禅宗 | Cyber-Zen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0014;
+            color: #00ffff;
+            font-family: 'Courier New', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 场频扫描线 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.02) 2px,
+                rgba(255,255,255,0.02) 4px
+            );
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 标题区 */
+        .seed {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* 核心模块 */
+        .module {
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: glitchIn 0.5s forwards;
+        }
+
+        .module:nth-child(2) { animation-delay: 0.3s; }
+        .module:nth-child(3) { animation-delay: 0.6s; }
+        .module:nth-child(4) { animation-delay: 0.9s; }
+        .module:nth-child(5) { animation-delay: 1.2s; }
+        .module:nth-child(6) { animation-delay: 1.5s; }
+
+        @keyframes glitchIn {
+            0% { 
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+            text-shadow: 0 0 5px rgba(0,255,255,0.3);
+        }
+
+        /* 意象 - 极细发光 */
+        .vibes {
+            font-size: 18px;
+            letter-spacing: 3px;
+            line-height: 2;
+            text-shadow: 0 0 8px #00ffff;
+        }
+
+        /* 判词 - 玫红裂痕 */
+        .resolution {
+            color: #ff007f;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 15px #ff007f;
+            padding: 20px 0;
+            border-left: 2px solid #ff007f;
+            padding-left: 20px;
+        }
+
+        /* 建议 - 代码指令 */
+        .action {
+            font-family: 'Consolas', monospace;
+            color: #00ff00;
+            font-size: 14px;
+            background: rgba(0,255,0,0.05);
+            padding: 15px;
+            border-left: 3px solid #00ff00;
+        }
+
+        /* 底部日志 */
+        .system-log {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 12px;
+            color: #444;
+            letter-spacing: 2px;
+        }
+
+        /* 心电波纹 */
+        .visualizer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(0,150,255,0.2);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: translateX(-50%) scale(0.8);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateX(-50%) scale(1);
+                opacity: 0.6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="seed">
+            >> SOURCE_SEED: [ 般若 ]
+        </div>
+
+        <div class="module">
+            <div class="label">[ 现实锚点 ]</div>
+            <div class="content">赛博禅宗协议接入成功</div>
+        </div>
+
+        <div class="module">
+            <div class="label">[ 频谱感知 ]</div>
+            <div class="vibes" id="vibes">枯木生电，长夜无垠。</div>
+        </div>
+
+        <div class="module">
+            <div class="label">[ 核心定论 ]</div>
+            <div class="resolution" id="resolution">
+                「 所有的纠结，源于你试图在虚空里建立永久链接。 」
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="label">[ 维度透视 ]</div>
+            <div class="content" id="perspective">
+                外部的信息流只是 0 与 1 的杂讯。当你闭上义体之眼，逻辑深度才会触达 100%。
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="label">[ 行为干预 ]</div>
+            <div class="content" id="intervention">
+                清除 24 小时内的缓存执念。
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="label">[ 算力执行 ]</div>
+            <div class="action" id="action">
+                > EXEC: 断网，冥想，感知呼吸的原始频率。
+            </div>
+        </div>
+
+        <div class="system-log">
+            >>> SYSTEM_LOG: CAUSALITY_LOCKED // 因果律已锁定
+        </div>
+    </div>
+
+    <div class="visualizer">
+        <div class="wave"></div>
+    </div>
+
+    <script>
+        // 木鱼音效（使用Web Audio API生成）
+        function playWoodenFish() {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            const delay = audioCtx.createDelay();
+            const feedback = audioCtx.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(delay);
+            delay.connect(feedback);
+            feedback.connect(delay);
+            delay.connect(audioCtx.destination);
+
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+            delay.delayTime.value = 0.3;
+            feedback.gain.value = 0.4;
+
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.5);
+        }
+
+        // 16进制代码跳动效果
+        function glitchText(element, finalText) {
+            const chars = '0123456789ABCDEF';
+            let iterations = 0;
+            const maxIterations = 20;
+            
+            const interval = setInterval(() => {
+                element.textContent = finalText
+                    .split('')
+                    .map((char, index) => {
+                        if (index < iterations) {
+                            return finalText[index];
+                        }
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join('');
+                
+                iterations += 1;
+                
+                if (iterations > maxIterations) {
+                    clearInterval(interval);
+                    element.textContent = finalText;
+                }
+            }, 30);
+        }
+
+        // 页面加载时触发
+        window.addEventListener('load', () => {
+            playWoodenFish();
+            
+            setTimeout(() => {
+                const vibes = document.getElementById('vibes');
+                const resolution = document.getElementById('resolution');
+                const perspective = document.getElementById('perspective');
+                const intervention = document.getElementById('intervention');
+                const action = document.getElementById('action');
+                
+                const originalTexts = {
+                    vibes: vibes.textContent,
+                    resolution: resolution.textContent,
+                    perspective: perspective.textContent,
+                    intervention: intervention.textContent,
+                    action: action.textContent
+                };
+                
+                glitchText(vibes, originalTexts.vibes);
+                setTimeout(() => glitchText(resolution, originalTexts.resolution), 300);
+                setTimeout(() => glitchText(perspective, originalTexts.perspective), 600);
+                setTimeout(() => glitchText(intervention, originalTexts.intervention), 900);
+                setTimeout(() => glitchText(action, originalTexts.action), 1200);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
